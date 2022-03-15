@@ -1,9 +1,14 @@
+from datetime import datetime
+
+# Screenshot util
+import mss
+
 # lists open windows
-import enum
 from pywinauto import Desktop
 
 # Enumerate windows on Desktop
 windows = Desktop(backend="uia").windows()
+# print(windows)
 
 exemption_list = [None, '', 'Program Manager', 'Taskbar', 'NVIDIA GeForce Overlay'] # Window names to ignore
 
@@ -29,7 +34,36 @@ while wait_on_input:
         print(f"Please enter a value in range 0-{len(windows) - 1}.")
         wait_on_input = True
 
-print(f"Capturing window with title \"{win_dict[target_win_idx]}\".")
+target_win_name = win_dict[target_win_idx]
+print(f"Capturing window with title \"{target_win_name}\".")
+
+# Hook into window to get its location and monitor
+target_win = Desktop(backend="uia").window(title=target_win_name)
+target_win_loc = target_win.rectangle()
+print(target_win_loc)
+target_win_coords = [target_win_loc.left, target_win_loc.top, target_win_loc.right, target_win_loc.bottom]
+print(target_win_coords)
+
+# Screenshot window
+with mss.mss() as sct:
+    # TODO: ensure non-primary monitors work
+    
+    print(f"Monitors found: {sct.monitors}") # First monitor (idx == 0) represents the "All in One" monitor
+    monitor = {'top': target_win_coords[0], 'left': target_win_coords[1], 'width': target_win_coords[2], 'height': target_win_coords[3]}
+    # output = f"./output/sct-{monitor['top']}x{monitor['left']}_{monitor['width']}x{monitor['height']}-{str(int(time()))}.png"
+    date_suffix = datetime.today().strftime("%m-%d-%Y %H_%M_%S")
+    filename = f"./output/slide-{date_suffix}.png"
+
+    # Grab the data
+    sct_img = sct.grab(monitor)
+
+    # Save to the picture file
+    mss.tools.to_png(sct_img.rgb, sct_img.size, output=filename)
+
+    # filename = sct.shot(mon=0, output=f'./output/screenshot-{str(int(time()))}.png') # mon == -1 represents all monitors. https://python-mss.readthedocs.io/examples.html
+    print(filename)
+
+
 
 
 
