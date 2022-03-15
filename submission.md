@@ -20,7 +20,7 @@ In a similar fashion, when watching slide-deck style presentations on the intern
 To generalize, the problem is that video-based learning is not effective on its own. 
 
 ## Why a solution is important?
-Taking notes by hand encourages better retention than taking pictures or solely listening [^fn1] [^fn2]
+Taking notes by hand encourages better retention than taking pictures or solely listening [^fn1] [^fn2]  
 Video-based learning should be supplemented with note-taking. Notes are easier to take when you have video-based slides for reference.
 
 *slider* summarizes videos into slides for annotation and review, leading to a richer learning experience. It allows you to reduce videos to PDF slide decks that can easily be imported into applications like OneNote.  
