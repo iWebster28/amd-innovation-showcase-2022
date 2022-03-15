@@ -11,6 +11,7 @@
 - App should automatically screen capture relevant learning material from a video stream, and then insert it into OneNote, or PDF for current, or later consumption.
 
 ## Compatibility
+- Tested on Windows  
 - Any streaming platform
   - Microsoft Teams
   - Any video stream in Chrome Browser? (stretch goal)
@@ -51,6 +52,21 @@ could hook into the stream in advance while watching it live?
   - [ ] Use win32 to grab non-primary monitor if screen of interest is not the primary. (PIL can only grab from primary.)
   - [ ] Could grab window of interest first (can be on non-primary monitor), just need to specify title name
     - [ ] Then decide which monitor it is on.
+    - [x] Try to use python-MSS to list monitors. 
+    - [ ] Allow user to select a specific monitore, or select application, then infer which monitor it is on.
+
+- Ways of capturing notes of interest:
+  - [ ] User selects region with mouse. (future)
+    - [ ] Drag to select
+    - [ ] Click to select
+    - [ ] Could use package like tkinter to provide UI tool to select
+  
+  - [x] User enters name of window of interest. (current scope)
+    - [x] List names of windows (in terminal or UI).
+    - [ ] i.e. Chrome, Microsoft Teams, Films & TV
+    - [x] Hook into window with package like pywinauto
+    - [ ] The window location from pywinauto should allow use to know which monitor it is on (for python-mss)
+
 - [x] Compare video frames
     - [ ] Other options
     - [ ] Compare current with previous frame
@@ -64,6 +80,7 @@ could hook into the stream in advance while watching it live?
     - [ ] YouTube (Live and downloadable)
         - [ ] Download accelerator that preprocesses video for unique frames.
     - [ ] Teams (Live)
+    - [ ] Browser: Enable screenshotting even when tab is not active
 
 - [ ] Convert images to PDF slidedeck
 
