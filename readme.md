@@ -48,12 +48,12 @@ could hook into the stream in advance while watching it live?
 ## TODO
 
 - [x] Grab individual video frames
-  - [ ] Grab entire screen first
-  - [ ] Use win32 to grab non-primary monitor if screen of interest is not the primary. (PIL can only grab from primary.)
-  - [ ] Could grab window of interest first (can be on non-primary monitor), just need to specify title name
-    - [ ] Then decide which monitor it is on.
+  - [x] Could grab window of interest first (can be on non-primary monitor), just need to specify title name
+    - [x] Then decide which monitor it is on.
     - [x] Try to use python-MSS to list monitors. 
-    - [ ] Allow user to select a specific monitore, or select application, then infer which monitor it is on.
+    - [ ] Allow user to select a specific monitor, or select application, then infer which monitor it is on.
+  - [x] Grab entire screen first
+    - [ ] Decide which region(s) of interest to capture (ones that has the most info change as video progresses.)
 
 - Ways of capturing notes of interest:
   - [ ] User selects region with mouse. (future)
@@ -66,6 +66,13 @@ could hook into the stream in advance while watching it live?
     - [x] i.e. Chrome, Microsoft Teams, Films & TV
     - [x] Hook into window with package like pywinauto
     - [x] The window location from pywinauto should allow use to know which monitor it is on (for python-mss)
+
+- [ ] Combine above functionality into OOP model before getting into image comparison
+  
+- [ ] Prompt user to either:
+  - [ ]  paste/copy images into OneNote/notetaking application (by selecting app name)
+  - [ ]  save to PNG
+  - [ ]  save to PDF
 
 - [x] Compare video frames
     - [ ] Other options
