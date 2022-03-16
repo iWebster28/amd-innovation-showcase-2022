@@ -15,7 +15,7 @@ Professors will even tell you what exact questions will be on the exam. All you 
 In online class over the pandemic, I found that most professors uploaded videos of them speaking over slides.
 The problem is that some professors do not always provide matching slide decks for their recorded videos.  
 
-In a similar fashion, when watching slide-deck style presentations on the internet (e.g. YouTube), there are not always slide downloads.  
+In a similar fashion, when watching slide-deck style presentations on the internet (e.g. YouTube) or at work, there are not always slide downloads.  
 
 To generalize, the problem is that video-based learning is not effective on its own. 
 
