@@ -46,7 +46,7 @@ print(f"Capturing window with title \"{target_win_name}\".")
 # We should assure we are hooked into the correct window for every screenshot:
 
 # Hook into window to get its location and monitor
-target_win = Desktop(backend="uia").window(title=target_win_name)
+target_win = Desktop(backend="uia").window(title=target_win_name, visible_only=False)
 
 # Get currently focused window
 # prev_focused_win = win32gui.GetForegroundWindow()
@@ -54,13 +54,14 @@ target_win = Desktop(backend="uia").window(title=target_win_name)
 # just use alt+tab later!
 
 # Focus window
+# target_win.restore() # NOTE: Window needs to be restored before running code!
 target_win.set_focus()
 
 # Get window coords
 target_win_loc = target_win.rectangle()
-print(target_win_loc)
+# print(target_win_loc)
 target_win_coords = [target_win_loc.left, target_win_loc.top, target_win_loc.right, target_win_loc.bottom]
-print(target_win_coords)
+# print(target_win_coords)
 
 # Screenshot window
 with mss.mss() as sct:
@@ -87,8 +88,6 @@ with mss.mss() as sct:
 
 # Go back to prev-focused window
 send_keys('%{TAB}')
-
-
 
 # Determining important frames to save!
 
