@@ -63,9 +63,9 @@ could hook into the stream in advance while watching it live?
   
   - [x] User enters name of window of interest. (current scope)
     - [x] List names of windows (in terminal or UI).
-    - [ ] i.e. Chrome, Microsoft Teams, Films & TV
+    - [x] i.e. Chrome, Microsoft Teams, Films & TV
     - [x] Hook into window with package like pywinauto
-    - [ ] The window location from pywinauto should allow use to know which monitor it is on (for python-mss)
+    - [x] The window location from pywinauto should allow use to know which monitor it is on (for python-mss)
 
 - [x] Compare video frames
     - [ ] Other options
