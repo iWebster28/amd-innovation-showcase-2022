@@ -51,7 +51,6 @@ could hook into the stream in advance while watching it live?
   - [x] Could grab window of interest first (can be on non-primary monitor), just need to specify title name
     - [x] Then decide which monitor it is on.
     - [x] Try to use python-MSS to list monitors. 
-    - [ ] Allow user to select a specific monitor, or select application, then infer which monitor it is on.
   - [x] Grab entire screen first
     - [ ] Decide which region(s) of interest to capture (ones that has the most info change as video progresses.)
 
@@ -67,26 +66,25 @@ could hook into the stream in advance while watching it live?
     - [x] Hook into window with package like pywinauto
     - [x] The window location from pywinauto should allow use to know which monitor it is on (for python-mss)
 
-- [ ] Combine above functionality into OOP model before getting into image comparison
+- [x] Combine above functionality into OOP model before getting into image comparison
   
-- [ ] Prompt user to either:
-  - [ ]  paste/copy images into OneNote/notetaking application (by selecting app name)
+- [x] Prompt user to either:
+  - [x]  paste/copy images into OneNote/(notetaking application (by selecting app name) (future scope))
   - [ ]  save to PNG
   - [ ]  save to PDF
 
 - [x] Compare video frames
-    - [ ] Other options
-    - [ ] Compare current with previous frame
+    - [x] Compare current with previous frame
     - [ ] Compare current frame with a sequence of previous frames
-- [ ] Save the minimal # of video frames that best represent the learnable content from the video - unique frames only
+- [x] Save the minimal # of video frames that best represent the learnable content from the video - unique frames only
 
 - [ ] Crop video to only the part of the screen that changed the most (assume rectangular)
     - [ ] Could even copy only the parts of the screen that have changed (save space)
 
 - [ ] Add other platform compatibility
-    - [ ] YouTube (Live and downloadable)
+    - [x] YouTube (Live and (downloadable (future scope)))
         - [ ] Download accelerator that preprocesses video for unique frames.
-    - [ ] Teams (Live)
+    - [x] Teams (Live)
     - [ ] Browser: Enable screenshotting even when tab is not active
 
 - [ ] Convert images to PDF slidedeck
