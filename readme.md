@@ -81,7 +81,7 @@ You should also open your video stream prior to launching the script.
     - [x] Teams (Live)
     - [ ] Browser: Enable screenshotting even when tab is not active
 
-- [ ] Convert images to PDF slidedeck
+- [ ] Convert images to PDF slidedeck (future)
 
 ## Future Ideas
 

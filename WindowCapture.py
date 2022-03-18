@@ -35,11 +35,11 @@ class WindowCapture:
     def set_onenote_win(self, onenote_win):
         self.onenote_win = onenote_win
 
-    def set_window_of_interest(self, type="target_win", win_name=None):
+    def set_window_of_interest(self, type="target_win", win_name=None, filter_by=None):
         # Get target window name
         while True:
             try:
-                win_name = get_win_name_from_user_input()
+                win_name = get_win_name_from_user_input(filter_by)
                 # We should assure we are hooked into the correct window for every screenshot:
                 # Hook into window to get its location and monitor
                 win = Desktop(backend="uia").window(title=win_name, visible_only=False)
@@ -125,7 +125,7 @@ class WindowCapture:
         if (error > IMG_ERROR_THRESHOLD) or (prev_screen is None):
             print("DETECTED FRAME CHANGE. SNAPPING!")
             # Save picture to file
-            mss.tools.to_png(self.target_win_pngs[0]['rgb'], self.target_win_pngs[0]['size'], output=self.target_win_pngs[0]['filename'])
+            mss.tools.to_png(self.target_win_pngs[-1]['rgb'], self.target_win_pngs[-1]['size'], output=self.target_win_pngs[-1]['filename'])
 
             # Paste to OneNote
             if self.onenote_win != None:
@@ -137,7 +137,7 @@ class WindowCapture:
         focus_window(self.onenote_win)
 
         # Reference: https://stackoverflow.com/questions/34322132/copy-image-to-clipboard
-        image = Image.open(BytesIO(self.target_win_pngs[0]['img_mem'])) # TODO: change: this may be inefficient. why are we using BytesIO twice? 
+        image = Image.open(BytesIO(self.target_win_pngs[-1]['img_mem'])) # TODO: change: this may be inefficient. why are we using BytesIO twice? 
         output = BytesIO()
         image.convert("RGB").save(output, "BMP")
         image_data = output.getvalue()[14:]

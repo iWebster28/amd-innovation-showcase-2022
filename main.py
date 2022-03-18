@@ -20,9 +20,9 @@ def main():
 
     # Set window of interest
     capture.set_window_of_interest(type="target_win")
-    print("\nDo you want to copy the screenshots directly into your current OneNote page? (y/n)")
+    print("\nDo you want to copy the screenshots directly into your current OneNote page? (y/n)", end=' ')
     if input().lower() == "y":
-        capture.set_window_of_interest(type="onenote_win")
+        capture.set_window_of_interest(type="onenote_win", filter_by="OneNote")
         
     # Get currently focused window
     # prev_focused_win = win32gui.GetForegroundWindow()

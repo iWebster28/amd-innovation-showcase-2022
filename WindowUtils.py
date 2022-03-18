@@ -9,12 +9,14 @@ from pywinauto import Desktop
 # Constants
 from constants import *
 
-def get_win_name_from_user_input():
+def get_win_name_from_user_input(filter_by):
     """
+    Params:
+        filter_by (str): Filter window names by this string.
     Returns:
         window name: the name of the window to capture.
     """
-    win_dict = get_window_dict()
+    win_dict = get_window_dict(filter_by)
 
     # Wait for window name to be selected
     wait_on_input = True
@@ -37,7 +39,7 @@ def get_win_name_from_user_input():
     return win_name
 
 
-def get_window_dict():
+def get_window_dict(filter_by):
     """
     Returns:
         dict: Dictionary of window index (on Desktop) and name
@@ -50,10 +52,12 @@ def get_window_dict():
     # Create dictionary of window index and name
     exemption_list = [None, '', 'Program Manager', 'Taskbar', 'NVIDIA GeForce Overlay'] # Window names to ignore
     windows = [w for w in windows if w.window_text() not in exemption_list]
+    if filter_by is not None:
+        windows = [w for w in windows if filter_by in w.window_text()]
     win_dict = {idx: w.window_text() for idx, w in enumerate(windows)}
 
     # List windows
-    print("Windows found:")
+    print(f"{'Filtered' if filter_by is not None else ''} Windows found:")
     for idx, win_name in win_dict.items():
         print(f"{idx}: {win_name}")
     
