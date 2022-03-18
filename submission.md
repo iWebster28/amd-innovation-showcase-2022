@@ -27,8 +27,6 @@ Video-based learning should be supplemented with note-taking. Notes are easier t
 
 [^fn1]: Learning Faster, https://www.entrepreneur.com/article/323450
 [^fn2]: Effective Note Taking in Class, https://learningcenter.unc.edu/tips-and-tools/effective-note-taking-in-class/
-
-
 ## Challenges
 I encountered a few significant challenges in this project.
 
@@ -37,3 +35,10 @@ Determining how to:
 2. Copy captured image data to the clipboard
 3. Detect when video frames "change" enough such that a new snapshot should be taken
 4. Comparing images in memory before saving to disk
+
+## What I would add in the future
+1. A GUI for ease of use
+2. Cross-platform compatibility
+3. Using the OneNote API to directly insert images into notebooks more elegantly (to avoid constant window refocusing with pywinauto)
+4. Support for exporting PDF slideshows
+5. Support for pre-downloading and processing videos
