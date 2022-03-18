@@ -1,0 +1,2 @@
+## YouTube
+- Playing a chrome tab adds "Audio playing" into the window title, which confuses pywinauto if you play your video AFTER you select the window you want to play: "... - YouTube - Audio playing - Google Chrome"
