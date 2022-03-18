@@ -1,61 +1,75 @@
-import os
-import glob
+# General
+from time import sleep
 
-from PIL import Image, ImageGrab
-import numpy as np
-from time import sleep, time
+from pywinauto import Desktop
 
-import constants as cnst
-# cnst.init()
+from WindowCapture import WindowCapture
+from WindowState import WindowState
+from WindowUtils import *
 
-OUTPUT_DIR = "output"
-IMG_ERROR_THRESHOLD = 1500 # maybe just use opencv contour tracing instead? if contours change enough, take more images?
-url = "https://www.youtube.com/watch?v=MBAJP-3ebDA" 
-
-url="https://www.youtube.com/watch?v=HLzv8TVMQHo"
+# Constants
+from constants import *
 
 def main():
-    remove_all_in_dir(OUTPUT_DIR)
-    proof_of_concept()
-    return
-
-def remove_all_in_dir(dir):
-    """Removes all files in directory `dir`
-
-    Args:
-        dir (str): directory to remove all files in
     """
-    for file in glob.glob(os.path.join(dir, "*")):
-        os.remove(file)
+    Start slider.
+    """
+    slider_running = True
+
+    # Init our WindowCapture object
+    capture = WindowCapture()
+
+    # Set window of interest
+    capture.set_window_of_interest(type="target_win")
+    print("\nDo you want to copy the screenshots directly into your current OneNote page? (y/n)")
+    if input().lower() == "y":
+        capture.set_window_of_interest(type="onenote_win")
+        
+    # Get currently focused window
+    # prev_focused_win = win32gui.GetForegroundWindow()
+    # prev_focused_win = Desktop(backend="win32").has_focus()
+    # just use alt+tab later!
+
+    # Capture screenshots
+    while slider_running:
+        # Focus window
+        focused = focus_window(capture.target_win)
+        if not focused:
+            print("Exiting slider.")
+            exit(1)
+        
+        # If window was minimized prior, we need time for it to restore from set_focus() before we screenshot it.
+        count = 0
+        while capture.target_win.get_show_state() == WindowState.MINIMIZED: # max/min/restore = 1/2/3
+            sleep(WINDOW_RESIZE_TIMEOUT_SEC)
+            print("Waiting for window restore...")
+            if count == 10:
+                print("Window remains minimized; cannot capture. Exiting slider.")
+                exit(1)
+            
+        # Get window coords
+        target_win_loc = capture.target_win.rectangle()
+        capture.set_target_win_coords([target_win_loc.left, target_win_loc.top, target_win_loc.right, target_win_loc.bottom])
+        # print(target_win_loc)
+        # print(target_win_coords)
+
+        # Capture screenshot
+        capture.take_screenshot()
+
+        # Determining important frames to save!
+        # Now: find the part of the window to focus on
+        # Opencv? or use ML model? or use another method?
+
+        # 1. Find area of interest in window. Crop screenshot to this.
+        # 2. Compare screenshots based on similarity. (PNGs in memory)
+        # 3. If different enough, save screenshot. (PNG saved to disk)
+        capture.save_new_screenshot()
+
+        sleep(MIN_SCREENSHOT_DELAY_SEC) #safety
+
+
     return
 
-def proof_of_concept():
-
-    prev_screencap = None
-
-    while True:
-        screencap = ImageGrab.grab(bbox=None)
-        if screencap is not None and prev_screencap is not None:
-            # diff = ImageChops.difference(screencap, prev_screencap)
-            # if diff.getbbox() is not None:
-            #     print("DIFF")
-            #     print(diff.getbbox())
-            error = mean_squared_error(np.array(screencap), np.array(prev_screencap))
-            print(error)
-            if error > IMG_ERROR_THRESHOLD:
-                print("DETETED FRAME CHANGE. SNAPPING.")
-                image = screencap.save(os.path.join(OUTPUT_DIR, f"{str(int(time()))}.png"))
-
-
-        prev_screencap = screencap
-        # screencap.show()
-        sleep(0.5)  
-    return
-
-def mean_squared_error(img1, img2):
-    err_term = (img1.astype("float") - img2.astype("float"))
-    error = np.sum(err_term * err_term)
-    return error/float(img1.shape[0] * img2.shape[1])
 
 if __name__ == "__main__":
     main()
