@@ -1,13 +1,12 @@
-# General
-from time import sleep
+# main.py
+# Slider CLI program.
 
-from pywinauto import Desktop
+from time import sleep
 
 from WindowCapture import WindowCapture
 from WindowState import WindowState
 from WindowUtils import *
 
-# Constants
 from constants import *
 
 def main():
@@ -57,16 +56,9 @@ def main():
         capture.take_screenshot()
 
         # Determining important frames to save!
-        # Now: find the part of the window to focus on
-        # Opencv? or use ML model? or use another method?
-
-        # 1. Find area of interest in window. Crop screenshot to this.
-        # 2. Compare screenshots based on similarity. (PNGs in memory)
-        # 3. If different enough, save screenshot. (PNG saved to disk)
         capture.save_new_screenshot()
 
-        sleep(MIN_SCREENSHOT_DELAY_SEC) #safety
-
+        sleep(MIN_SCREENSHOT_DELAY_SEC) # safety
 
     return
 

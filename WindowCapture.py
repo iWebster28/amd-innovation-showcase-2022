@@ -1,4 +1,6 @@
-# General
+# WindowCapture.py
+# Utilities for capturing window state and screenshots.
+
 from datetime import datetime
 from time import sleep
 
@@ -51,6 +53,7 @@ class WindowCapture:
             except Exception as e:
                 print(f"Error: {e}")
                 print("Please try selecting another window.")
+        return
     
     def take_screenshot(self):
         """Screenshots the current `self.target_win"""
@@ -93,7 +96,15 @@ class WindowCapture:
 
     def save_new_screenshot(self):
         """Determines if the current screenshot is different from the previous screenshot(s), and if so, saves it to disk"""
-        # check for 2 screenshots of not. take second last and last to compare
+
+        # Now: find the part of the window to focus on
+        # Opencv? or use ML model? or use another method?
+
+        # 1. Find area of interest in window. Crop screenshot to this.
+        # 2. Compare screenshots based on similarity. (PNGs in memory)
+        # 3. If different enough, save screenshot. (PNG saved to disk)
+        # check for 2 screenshots of not. take second last and last to compare.
+
         if len(self.target_win_pngs) < 1:
             raise Exception("No screenshots taken: cannot save_new_screenshot().")
 
@@ -140,3 +151,4 @@ class WindowCapture:
         send_keys('^v')
         # Return focus to previously focused window
         send_keys('%{TAB}')
+        return

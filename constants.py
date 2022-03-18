@@ -9,4 +9,4 @@ WINDOW_RESIZE_TIMEOUT_SEC = 0.1     # Timeout to ensure window visable before sc
 OUTPUT_DIR = "output"
 LAST_N_SCREENSHOTS = 5
 MIN_SCREENSHOT_DELAY_SEC = 1        # Minimum time between screenshots
-IMG_ERROR_THRESHOLD = 1500          # Threshold for image similarity
+IMG_ERROR_THRESHOLD = 1000         # Threshold for image similarity
