@@ -1,3 +1,6 @@
+# WindowUtils.py
+# Utilities for window capture.
+
 # General
 from time import sleep
 

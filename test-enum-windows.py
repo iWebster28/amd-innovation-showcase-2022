@@ -54,7 +54,7 @@ def main():
         # print(target_win_coords)
 
         # Capture screenshot
-        capture.screenshot()
+        capture.take_screenshot()
 
         # Determining important frames to save!
         # Now: find the part of the window to focus on
@@ -63,11 +63,9 @@ def main():
         # 1. Find area of interest in window. Crop screenshot to this.
         # 2. Compare screenshots based on similarity. (PNGs in memory)
         # 3. If different enough, save screenshot. (PNG saved to disk)
+        capture.save_new_screenshot()
 
-
-        capture.paste_to_onenote()
-
-        sleep(5) #safety
+        sleep(MIN_SCREENSHOT_DELAY_SEC) #safety
 
 
     return

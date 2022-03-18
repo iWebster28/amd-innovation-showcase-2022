@@ -29,3 +29,11 @@ Video-based learning should be supplemented with note-taking. Notes are easier t
 [^fn2]: Effective Note Taking in Class, https://learningcenter.unc.edu/tips-and-tools/effective-note-taking-in-class/
 
 
+# Challenges
+I encountered a few significant challenges in this project.
+
+Determining how to:
+1. Capture desktop windows on any monitor
+2. Copy captured image data to the clipboard
+3. Detect when video frames "change" enough such that a new snapshot should be taken
+4. Comparing images in memory before saving to disk
