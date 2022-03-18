@@ -58,6 +58,8 @@ def main():
         # Determining important frames to save!
         capture.save_new_screenshot()
 
+        # capture.crop_image() # future implementation for smarter video frame crops.
+
         sleep(MIN_SCREENSHOT_DELAY_SEC) # safety
 
     return

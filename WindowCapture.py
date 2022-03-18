@@ -78,7 +78,7 @@ class WindowCapture:
         # Save picture to memory for analysis
         # Can also copy to clipboard if going to copy into onenote, or other notetaking app.
         target_win_png = mss.tools.to_png(sct_img.rgb, sct_img.size)
-        self.target_win_pngs.append({"img_mem": target_win_png, "rgb": sct_img.rgb, "size": sct_img.size, "filename": filename})
+        self.target_win_pngs.append({"img_mem": target_win_png, "rgb": sct_img.rgb, "size": sct_img.size, "filename": filename, "sct": sct_img})
         self.target_win_pngs = self.target_win_pngs[-LAST_N_SCREENSHOTS:] # Keep only the last 5 screenshots
 
         # filename = sct.shot(mon=0, output=f'./output/screenshot-{str(int(time()))}.png') # mon == -1 represents all monitors. https://python-mss.readthedocs.io/examples.html
@@ -152,3 +152,79 @@ class WindowCapture:
         # Return focus to previously focused window
         send_keys('%{TAB}')
         return
+    
+    def crop_image(self):
+        """Not Implemented"""
+        raise NotImplementedError
+
+        import cv2
+
+        # load the image
+        # image = cv2.imread(BytesIO(self.target_win_pngs[-1]['img_mem']), 1)
+        image = np.array(self.target_win_pngs[-1]['sct']) # or pass sct  from sct.grab
+
+        # https://stackoverflow.com/questions/44588279/find-and-draw-the-largest-contour-in-opencv-on-a-specific-color-python#:~:text=You%20can%20start%20by%20defining,rectangular%20shape%20of%20the%20book.&text=If%20you%20want%20the%20book,you%20can%20find%20it%20here.
+
+        # # red color boundaries [B, G, R]
+        # lower = [1, 0, 20]
+        # upper = [60, 40, 220]
+
+        # # create NumPy arrays from the boundaries
+        # lower = np.array(lower, dtype="uint8")
+        # upper = np.array(upper, dtype="uint8")
+
+        # # find the colors within the specified boundaries and apply
+        # # the mask
+        # mask = cv2.inRange(image, lower, upper)
+        # output = cv2.bitwise_and(image, image, mask=mask)
+
+        # ret,thresh = cv2.threshold(mask, 40, 255, 0)
+        # if (cv2.__version__[0] > 3):
+        #     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        # else:
+        #     im2, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
+        # if len(contours) != 0:
+        #     # draw in blue the contours that were founded
+        #     cv2.drawContours(output, contours, -1, 255, 3)
+
+        #     # find the biggest countour (c) by the area
+        #     c = max(contours, key = cv2.contourArea)
+        #     x,y,w,h = cv2.boundingRect(c)
+
+        #     # draw the biggest contour (c) in green
+        #     cv2.rectangle(output,(x,y),(x+w,y+h),(0,255,0),2)
+
+        # # show the images
+        # cv2.imshow("Result", np.hstack([image, output]))
+
+        # cv2.waitKey(0)
+
+        # im = cv2.imread('test.jpg')
+        imgray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+        ret, thresh = cv2.threshold(imgray, 10, 255, cv2.THRESH_BINARY_INV)
+        # th3 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY,11,2)
+        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        
+        # print(contours)
+
+
+
+
+
+        if len(contours) != 0:
+            # draw in blue the contours that were founded
+            cv2.drawContours(image, contours, -1, 255, 3)
+
+            # find the biggest countour (c) by the area
+            c = max(contours, key = cv2.contourArea)
+            x,y,w,h = cv2.boundingRect(c)
+
+            # draw the biggest contour (c) in green
+            cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+
+        # show the images
+        cv2.imshow("Result", np.hstack([image]))
+        cv2.waitKey(0)
+        exit(0)
+    
