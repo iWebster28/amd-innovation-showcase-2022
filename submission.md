@@ -4,7 +4,7 @@ Give us a brief rundown on what motivated the project, what problem is it solvin
 ## Inspiration 
 My inspiration for this project comes from the online classes I took during the pandemic and for work.
 ## Motivation
-Taking notes in class can be an arduous task. There are countless approaches to learning. Should you listen? Should you write down the gist of the idea? Should you solely take pictures? Should you record audio or video?
+Taking notes in class or while self-learning can be an arduous task. There are countless approaches to learning. Should you listen? Should you write down the gist of the idea? Should you solely take pictures? Should you record audio or video?
 We all have different learning styles. As such, some types of note-taking are more effective than others.  
 
 However, while everyone learns differently, many professors emphasize the importance of coming to lectures. 
@@ -17,7 +17,7 @@ The problem is that some professors do not always provide matching slide decks f
 
 In a similar fashion, when watching slide-deck style presentations on the internet (e.g. YouTube) or at work, there are not always slide downloads.  
 
-To generalize, the problem is that video-based learning is not effective on its own. 
+To generalize, the problem is that video-based learning is not effective on its own, and not all learning sources provide slide downloads.
 
 ## Why a solution is important?
 Taking notes by hand encourages better retention than taking pictures or solely listening [^fn1] [^fn2]  
@@ -29,7 +29,7 @@ Video-based learning should be supplemented with note-taking. Notes are easier t
 [^fn2]: Effective Note Taking in Class, https://learningcenter.unc.edu/tips-and-tools/effective-note-taking-in-class/
 
 
-# Challenges
+## Challenges
 I encountered a few significant challenges in this project.
 
 Determining how to:
