@@ -1,4 +1,4 @@
-# AMD INNOVATION SHOWCASE 2022
+# Slider - AMD Innovation Showcase 2022 Submission
 
 ## Motivation
 - Some video streams do not have downloads of their learning material, i.e. pptx, word files.
