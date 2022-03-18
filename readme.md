@@ -24,8 +24,8 @@
 
 - Export formats:
   - Single-frame PNGs
-  - PDF
-  - PPTX 
+  - PDF (future)
+  - PPTX  (future)
   - TXT (OCR) (stretch goal)
   - Directly to onenote for live annotation? [OneNote API](https://developer.microsoft.com/en-us/graph/get-started), [Graph API](https://developer.microsoft.com/en-us/graph/quick-start)
     - Graph API does not work for my school/work account.
@@ -64,7 +64,7 @@ You should also open your video stream prior to launching the script.
   
 - [x] Prompt user to either:
   - [x]  paste/copy images into OneNote/(notetaking application (by selecting app name) (future scope))
-  - [ ]  save to PNG
+  - [x]  save to PNG
   - [ ]  save to PDF
 
 - [x] Compare video frames
