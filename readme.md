@@ -31,19 +31,13 @@
     - Graph API does not work for my school/work account.
 
 
-## Endnotes
-
-
-## Ideas
-
-- run a simultaneous stream and pull frames from it, 
-before they happen in your browser stream, 
-so that they can be exported into your notetaking app BEFORE the stream gets there, 
-and so you can annotate them before the stream gets there
-This will only work for certain streams, like browser ones
-How would this work with teams? it wouldn't. You'd just have to capture live....unless you somehow
-could hook into the stream in advance while watching it live?
-
+## How to use Slider!
+1. Install [Python](https://www.python.org/downloads/) for your OS. Note: slider has only been tested on Windows 10.  
+2. `git clone` this repository.
+3. `pip install -r requirements.txt`
+4. Note: If you are going to use this program with a notetaking app like OneNote, you should open this app before launching the script.
+You should also open your video stream prior to launching the script.
+5. `python main.py` to run the program. 
 
 ## TODO
 
@@ -88,4 +82,14 @@ could hook into the stream in advance while watching it live?
     - [ ] Browser: Enable screenshotting even when tab is not active
 
 - [ ] Convert images to PDF slidedeck
+
+## Future Ideas
+
+- run a simultaneous stream and pull frames from it, 
+before they happen in your browser stream, 
+so that they can be exported into your notetaking app BEFORE the stream gets there, 
+and so you can annotate them before the stream gets there
+This will only work for certain streams, like browser ones
+How would this work with teams? it wouldn't. You'd just have to capture live....unless you somehow
+could hook into the stream in advance while watching it live?
 
