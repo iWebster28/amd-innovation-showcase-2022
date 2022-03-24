@@ -1,6 +1,7 @@
 # main.py
 # Slider CLI program.
 
+import os
 from time import sleep
 
 from WindowCapture import WindowCapture
@@ -14,6 +15,9 @@ def main():
     Start slider.
     """
     slider_running = True
+
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
 
     # Init our WindowCapture object
     capture = WindowCapture()
