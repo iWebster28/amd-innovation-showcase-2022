@@ -3,7 +3,7 @@
 ![ISC Innovation Showcase 2022 Banner](innovation-showcase-banner.png)  
 
 ## Mock UI
-![Figma Mockup](Slider UI Figma.png)  
+![Figma Mockup](slider-ui.png)  
 
 ## Motivation
 - Some video streams do not have downloads of their learning material, i.e. pptx, word files.
