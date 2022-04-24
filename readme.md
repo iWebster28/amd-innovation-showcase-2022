@@ -1,6 +1,10 @@
 # Slider - AMD Innovation Showcase 2022 Submission
 
 ![ISC Innovation Showcase 2022 Banner](innovation-showcase-banner.png)  
+
+## Mock UI
+![Figma Mockup](Slider UI Figma.png)  
+
 ## Motivation
 - Some video streams do not have downloads of their learning material, i.e. pptx, word files.
 - Generate a "powerpoint" for videos that don't have powerpoints, but can be split into less frames
